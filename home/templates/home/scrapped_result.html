@@ -1,0 +1,25 @@
+{% extends 'globals/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Needs further implementation whether to include resultcss or scrapping.css -->
+    <link rel="stylesheet" href="{% static 'home/css/scrapping.css' %}">
+
+    <div>
+        {% if scrapped_result %}
+
+        <!-- Link Won't work if not stored in database -->
+        <p>
+            {{ scrapped_result | linebreaksbr }}
+        </p>
+
+        <div class="print-button">
+            <a href="{% url 'print_report' report_number %}">Print Report</a>
+        </div>
+        {% else %}
+            <p class="no-result">No scrapped result available. Please submit a news article for analysis.</p>
+        {% endif %}
+
+    </div>
+   
+{% endblock %}
